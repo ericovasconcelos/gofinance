@@ -9,25 +9,27 @@ import {
     CategoryName,
     Date
 } from './styles';
+import { categories } from '../../utils/categories';
 
 interface Category {
     name: string;
     icon: string;
 }
 
-export interface TransactionCardProps { 
-        type: 'income' | 'outcome';
-        title: string;
-        amount: string;
-        category: Category;
-        date: string;
+export interface TransactionCardProps {
+    type: 'income' | 'outcome';
+    title: string;
+    amount: string;
+    category: string;
+    date: string;
 }
 
 interface Props {
     transaction: TransactionCardProps;
 }
 
-export function TransactionCard({transaction}: Props) {
+export function TransactionCard({ transaction }: Props) {
+    const category = categories.find(category => category.key == transaction.category)!;
     return (
         <Container>
             <Title>{transaction.title}</Title>
@@ -36,12 +38,12 @@ export function TransactionCard({transaction}: Props) {
             >
                 {transaction.type === 'outcome' && '- '}
                 {transaction.amount}
-                </Amount>
+            </Amount>
 
             <Footer>
                 <Category>
-                    <Icon name={transaction.category.icon} />
-                    <CategoryName>{transaction.category.name}</CategoryName>
+                    <Icon name={category.icon} />
+                    <CategoryName>{category.name}</CategoryName>
                 </Category>
                 <Date>{transaction.date}</Date>
             </Footer>

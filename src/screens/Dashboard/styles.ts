@@ -84,3 +84,9 @@ export const TransactionsList = styled.FlatList.attrs({
     showsVerticalScrollIndicator: false,
     contentContainerStyle: { paddingBottom: getBottomSpace() },
 })`` as unknown as new () => FlatList<DataListProps>;
+
+export const LoadContainer = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`;

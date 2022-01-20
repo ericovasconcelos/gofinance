@@ -7,7 +7,7 @@ import {
 
 interface Props extends RectButtonProps {
     title: string;
-    onPress: () => {};
+    onPress: () => {} | void;
 }
 
 export function Button ({title,...rest}: Props): JSX.Element {
