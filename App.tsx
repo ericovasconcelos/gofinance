@@ -1,7 +1,6 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import { ThemeProvider } from 'styled-components';
-import { Dashboard } from './src/screens/Dashboard';
-import { Register } from './src/screens/Register';
 import {
   useFonts,
   Poppins_400Regular,
@@ -11,10 +10,10 @@ import {
 
 import theme from './src/global/theme';
 import AppLoading from 'expo-app-loading';
-import { AppRoutes } from './src/routes/app.routes';
-
 import { NavigationContainer } from '@react-navigation/native';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SignIn } from './src/screens/SignIn';
+import { AuthProvider } from './src/hooks/auth';
+import { Routes } from './src/routes';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -29,9 +28,10 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <AppRoutes />
-        </NavigationContainer>
+        <StatusBar barStyle="light-content" />
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
     </ThemeProvider>
   );
 }

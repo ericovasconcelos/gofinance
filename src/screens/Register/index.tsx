@@ -26,6 +26,7 @@ import {
     Fields,
     TransactionButtons
 } from './styles';
+import { useAuth } from '../../hooks/auth';
 
 type TransactionType = "income" | "outcome";
 
@@ -52,6 +53,7 @@ export function Register(): JSX.Element {
     const [categoryModalOpen, setCategoryModalOpen] = useState(false);
 
     const navigation = useNavigation();
+    const { user } = useAuth();
 
     const {
         control,
@@ -91,7 +93,7 @@ export function Register(): JSX.Element {
         }
         try {
 
-            const dataKey = '@gofinance:transactions';
+            const dataKey = `@gofinance:transactions_user:${user.id}`;
             const transactions = await AsyncStorage.getItem(dataKey);
             const parsedTransactions = transactions ? JSON.parse(transactions) : [];
             const formattedTransactions = [...parsedTransactions, newTransaction];
