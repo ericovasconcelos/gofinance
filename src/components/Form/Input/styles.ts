@@ -22,5 +22,5 @@ export const Container = styled(TextInput) <Props>`
     ${({ active, theme }) => active && css`
         border-width: 3px;
         border-color: ${theme.colors.attention};
-        }
+        `};
 `;
