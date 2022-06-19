@@ -10,15 +10,19 @@ import {
 export function Profile() {
     return (
         <View>
-            <Text>Profile</Text>
+            <Text testID="text-title">Profile</Text>
 
             <TextInput
+                testID='input-name'
                 placeholder="Nome"
                 autoCorrect={false}
+                value="Erico"
             />
 
             <TextInput
+                testID='input-surname'
                 placeholder="Sobrenome"
+                value="Vasconcelos"
             />
 
             <Button
