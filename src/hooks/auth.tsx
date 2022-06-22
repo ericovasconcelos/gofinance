@@ -46,6 +46,19 @@ function AuthProvider({ children }: AuthProviderProps) {
     const [userStorageLoading, setUserStorageLoading] = useState(true);
     const userStorageKey = '@gofinances:user';
 
+    useEffect(() => {
+        async function loadUserStorageData(){
+            const userStoraged = await AsyncStorage.getItem(userStorageKey);
+
+            const userLogged = userStoraged ? JSON.parse(userStoraged) : {} as User;
+            setUser(userLogged);
+
+            setUserStorageLoading(false);
+        }
+
+        loadUserStorageData();
+    },[]);
+
     async function signInWithGoogle() {
         try {
             const RESPONSE_TYPE = "token";
@@ -105,18 +118,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         AsyncStorage.removeItem(userStorageKey);
     }
 
-    useEffect(() => {
-        async function loadUserStorageData(){
-            const userStoraged = await AsyncStorage.getItem(userStorageKey);
-
-            const userLogged = userStoraged ? JSON.parse(userStoraged) : {} as User;
-            setUser(userLogged);
-
-            setUserStorageLoading(false);
-        }
-
-        loadUserStorageData();
-    },[]);
+   
 
 
 

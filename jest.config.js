@@ -1,11 +1,18 @@
+const expoPreset = require('jest-expo/jest-preset');
+
 module.exports = {
-    "preset": "jest-expo",
-    "testPathIgnorePatterns": [
-        "<rootDir>/node_modules/",
-        "<rootDir>/android/",
-        "<rootDir>/ios/",
+    ...expoPreset,
+    preset: "@testing-library/react-native",
+    testPathIgnorePatterns: [
+        "/node_modules",
+        "/android",
+        "/ios"
     ],
-    "setupFilesAfterEnv": [
-        "@testing-library/jest-native/extend-expect"
-    ]
-};
+    setupFilesAfterEnv: [
+        "@testing-library/jest-native/extend-expect",
+        "jest-styled-components"
+    ],
+    automock: false,
+    resetMocks: false,
+    setupFiles: ["./setupFile.js"]
+}
