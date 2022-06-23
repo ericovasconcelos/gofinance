@@ -56,5 +56,28 @@ describe('Auth Hook', () => {
         expect(result.current.user.email)
             .toBe('rodrigo.goncalves@rocketseat.team');
 
+    });
+
+    it('should not connect if cancel authentication with Google', async() => {
+        const googleMocked = mocked(startAsync as any);
+        await googleMocked.mockReturnValueOnce({
+            type: 'cancel',
+            params: {
+                access_token: '1234-567',
+            }
+        });
+
+        const { result } = renderHook(() => useAuth(), {
+            wrapper: AuthProvider
+        });
+
+        await act(async () => {
+            await result.current.signInWithGoogle();
+        });
+
+        expect(result.current.user).not.toHaveProperty('id');
+
     })
+
+
 })

@@ -169,7 +169,7 @@ export function Register(): JSX.Element {
                     />
                 </Form>
 
-                <Modal visible={categoryModalOpen}>
+                <Modal testID="modal" visible={categoryModalOpen}>
                     <CategorySelect
                         category={category}
                         setCategory={setCategory}
