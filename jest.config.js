@@ -16,6 +16,7 @@ module.exports = {
         "jest-styled-components"
     ],
     verbose: true,
+    silent: true,
     setupFiles: [
         "./setupFile.js",
         "./node_modules/react-native-gesture-handler/jestSetup.js"

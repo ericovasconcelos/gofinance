@@ -13,7 +13,7 @@ interface Props extends RectButtonProps {
 
 export function CategorySelectButton({title, ...rest}: Props){
     return (
-        <Container onPress={rest.onPress}>
+        <Container onPress={rest.onPress} {...rest}>
            <Category>{title}</Category>
            <Icon name="chevron-down" />
         </Container>

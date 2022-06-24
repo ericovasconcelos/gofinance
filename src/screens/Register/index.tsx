@@ -158,6 +158,7 @@ export function Register(): JSX.Element {
                         </TransactionButtons>
 
                         <CategorySelectButton
+                            testID='button-category'
                             title={category.name}
                             onPress={handleCategorySelectButtonClick}
                         />
@@ -169,7 +170,7 @@ export function Register(): JSX.Element {
                     />
                 </Form>
 
-                <Modal testID="modal" visible={categoryModalOpen}>
+                <Modal testID="modal-category" visible={categoryModalOpen}>
                     <CategorySelect
                         category={category}
                         setCategory={setCategory}

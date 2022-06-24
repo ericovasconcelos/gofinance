@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 import { ThemeProvider } from 'styled-components/native';
 import theme from '../../global/theme';
 import { Register } from '.';
@@ -33,6 +33,13 @@ describe('Register Screen', () => {
             {
                 wrapper: Providers
             }
-        )
+        );
+
+        const categoryModel = getByTestId('modal-category');
+        const categoryButton = getByTestId('button-category');
+        fireEvent.press(categoryButton);
+        expect(categoryModel.props.visible).toBeTruthy();
+
     });
+
 });
