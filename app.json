@@ -14,7 +14,7 @@
       "**/*"
     ],
     "ios": {
-      "buildNumber" : "3.0.0"
+      "buildNumber" : "4.0.0"
     },
     "android": {
       "adaptativeIcon": {
